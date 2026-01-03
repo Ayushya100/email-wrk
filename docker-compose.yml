@@ -1,0 +1,16 @@
+services:
+  email-worker:
+    build:
+      context: ../..
+      dockerfile: services/email-wrk/Dockerfile
+    container_name: finance-email-consumer
+    env_file:
+      - .env
+    restart: always
+    networks:
+      - finance-network
+
+networks:
+  finance-network:
+    external: true
+    name: finance-network

@@ -1,0 +1,44 @@
+{
+  "name": "email-wrk",
+  "version": "1.0.0",
+  "description": "A **production-grade background worker service** responsible for consuming and processing email-related tasks from **RabbitMQ**, with **Redis-backed retry handling**, **secure message verification**, and **graceful shutdown support**.",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon src/index.js",
+    "start:worker": "node src/index.js",
+    "format": "prettier --write \"src/**/*.js\"",
+    "format:check": "prettier --check \"src/**/*.js\"",
+    "infra:build": "docker-compose build",
+    "infra:up": "docker-compose up -d --build --force-recreate",
+    "infra:down": "docker-compose down",
+    "infra:logs": "docker logs -f finance-email-consumer",
+    "infra:debug": "docker run --rm -it --env-file .env --network finance-network finance-email-consumer"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Ayushya100/email-wrk.git"
+  },
+  "keywords": [
+    "nodejs",
+    "express",
+    "javascript",
+    "email-wrk"
+  ],
+  "author": "Ayushya Jaiswal",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Ayushya100/email-wrk/issues"
+  },
+  "homepage": "https://github.com/Ayushya100/email-wrk#readme",
+  "devDependencies": {
+    "prettier": "^3.7.4"
+  },
+  "dependencies": {
+    "common-svc-lib": "file:../../common-svc-lib",
+    "dotenv": "^17.2.3",
+    "mailgen": "^2.0.32",
+    "nodemailer": "^7.0.12"
+  }
+}
