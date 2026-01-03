@@ -1,0 +1,13 @@
+{
+  "TEMPLATE": {
+    "USER_VERIFICATION_MAIL": "userVerificationMail"
+  },
+  "USER_VERIFICATION_MAIL": {
+    "SUBJECT": "Welcome to Finance Tracker - Verify Your Email and Activate Your Account.",
+    "INTRO": "We are thrilled to welcome you to Finance Tracker! Thank you for choosing us as your trusted platform. Your journey toward financial empowerment and success begins here.<br>To ensure the security and integrity of your account, we kindly ask you to verify your email address and activate your account.",
+    "INSTRUCTIONS": "Verify Your Email",
+    "BTN_COLOR": "#22BC66",
+    "BTN_TEXT": "Verify your Account",
+    "OUTRO": "After verifying your email, you can log in to your account and start exploring all the powerful features that Finance Tracker offers.<br>If you didn't register for an account with us, please ignore this email.<br>We're excited to have you join our community of financially savvy users. Together, we can help you achieve your financial goals and make smart money decisions.<br>Thank you for choosing Finance Tracker, and welcome aboard!"
+  }
+}
