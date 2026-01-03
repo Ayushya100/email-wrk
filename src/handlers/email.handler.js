@@ -1,7 +1,7 @@
 'use strict';
 
 import { logger } from 'common-svc-lib';
-import { validatePayload, sendVerificationMail } from '../controllers/index.js';
+import { validatePayload, sendVerificationMail, sendVerificationConfirmationMail } from '../controllers/index.js';
 
 const log = logger('Email-Handler');
 
@@ -16,6 +16,9 @@ const handleEmailTask = async (taskData) => {
     switch (taskData.payload.template) {
       case 'USER_VERIFICATION_MAIL':
         await sendVerificationMail(taskData.payload);
+        break;
+      case 'VERIFICATION_CONFIRM_MAIL':
+        await sendVerificationConfirmationMail(taskData.payload);
         break;
     }
 
