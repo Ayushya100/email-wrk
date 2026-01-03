@@ -17,11 +17,6 @@ const validatePayload = (payload) => {
     throw new Error('Email body data missing');
   }
 
-  if (payload.data.is_verified) {
-    log.error('User already verified');
-    throw new Error('User already verified');
-  }
-
   log.success('Payload validation completed successfully');
   return true;
 };

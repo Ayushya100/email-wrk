@@ -29,4 +29,25 @@ const sendVerificationMail = async (payload) => {
   log.success('Verification mail send operation completed');
 };
 
-export { sendVerificationMail };
+const sendVerificationConfirmationMail = async (payload) => {
+  log.info('Verification Confirmation mail send to user process initiated');
+  const fullName = getFullName(payload.data);
+  const tabularData = [
+    { name: 'First Name', description: payload.data.first_name },
+    { name: 'Last Name', description: payload.data.last_name },
+    { name: 'Username', description: payload.data.username },
+    { name: 'Email Id', description: payload.data.email_id },
+  ];
+
+  const options = {
+    name: fullName,
+    email_id: payload.to,
+    TABLE_DATA: tabularData,
+  };
+
+  await sendMail('VERIFICATION_CONFIRM_MAIL', 'TABLE', options);
+
+  log.success('Verification Confirmation mail send operation completed');
+};
+
+export { sendVerificationMail, sendVerificationConfirmationMail };

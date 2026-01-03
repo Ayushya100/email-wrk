@@ -29,17 +29,15 @@ class Mail {
     let applicationInfo = await readFile(applicationPath, 'utf-8');
     applicationInfo = JSON.parse(applicationInfo);
 
-    const templateName = template.TEMPLATE[this.template];
     const templateDtl = template[this.template];
 
-    if (!templateName || !templateDtl) {
+    if (!templateDtl) {
       log.error('Template Details not found');
       throw new Error('Template Details not found');
     }
 
     this.emailOptions = {
       ...this.options,
-      templateName,
       ...templateDtl,
       ...applicationInfo,
     };
