@@ -82,8 +82,7 @@ class Mail {
         },
       };
     }
-
-    body['outro'] = this.emailOptions.outro;
+    body['outro'] = this.emailOptions.OUTRO;
 
     this.body = {
       body: body,
