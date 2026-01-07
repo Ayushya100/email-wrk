@@ -21,7 +21,7 @@ const sendVerificationMail = async (payload) => {
   const options = {
     name: fullName,
     email_id: payload.to,
-    link: `${accountSvcConfig.serviceName}/api/v1.0/auth/verify-email/${convertIdToPrettyString(payload.data.id)}/${payload.data.verification_code}`,
+    link: `${accountSvcConfig.serviceName}/api/v1.0/auth/verify/email/${convertIdToPrettyString(payload.data.id)}/${payload.data.verification_code}`,
   };
 
   await sendMail(payload.template, 'PLAIN', options);
@@ -45,9 +45,24 @@ const sendVerificationConfirmationMail = async (payload) => {
     TABLE_DATA: tabularData,
   };
 
-  await sendMail('VERIFICATION_CONFIRM_MAIL', 'TABLE', options);
+  await sendMail(payload.template, 'TABLE', options);
 
   log.success('Verification Confirmation mail send operation completed');
 };
 
-export { sendVerificationMail, sendVerificationConfirmationMail };
+const sendPasswordResetRequestMail = async (payload) => {
+  log.info('Password Reset Request mail send operation initiated');
+  const fullName = getFullName(payload.data);
+
+  const options = {
+    name: fullName,
+    email_id: payload.to,
+    link: `${accountSvcConfig.serviceName}/api/v1.0/auth/password/reset/${convertIdToPrettyString(payload.data.id)}/${payload.data.verification_code}`,
+  };
+
+  await sendMail(payload.template, 'PLAIN', options);
+
+  log.success('Password Reset Request mail send operation completed');
+};
+
+export { sendVerificationMail, sendVerificationConfirmationMail, sendPasswordResetRequestMail };
