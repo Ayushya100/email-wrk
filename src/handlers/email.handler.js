@@ -1,7 +1,13 @@
 'use strict';
 
 import { logger } from 'common-svc-lib';
-import { validatePayload, sendVerificationMail, sendVerificationConfirmationMail, sendPasswordResetRequestMail } from '../controllers/index.js';
+import {
+  validatePayload,
+  sendVerificationMail,
+  sendVerificationConfirmationMail,
+  sendPasswordResetRequestMail,
+  sendPasswordResetConfirmationmail,
+} from '../controllers/index.js';
 
 const log = logger('Email-Handler');
 
@@ -22,6 +28,9 @@ const handleEmailTask = async (taskData) => {
         break;
       case 'USER_PASSWORD_RESET_REQUEST':
         await sendPasswordResetRequestMail(taskData.payload);
+        break;
+      case 'USER_PASSWORD_RESET_CONFIRMATION':
+        await sendPasswordResetConfirmationmail(taskData.payload);
         break;
     }
 

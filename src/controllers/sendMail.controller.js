@@ -65,4 +65,18 @@ const sendPasswordResetRequestMail = async (payload) => {
   log.success('Password Reset Request mail send operation completed');
 };
 
-export { sendVerificationMail, sendVerificationConfirmationMail, sendPasswordResetRequestMail };
+const sendPasswordResetConfirmationmail = async (payload) => {
+  log.info('Password Reset confirmation mail send operation initiated');
+  const fullName = getFullName(payload.data);
+
+  const options = {
+    name: fullName,
+    email_id: payload.to,
+  };
+
+  await sendMail(payload.template, 'PLAIN', options);
+
+  log.success('Password Reset confirmation mail has been sent successfully');
+};
+
+export { sendVerificationMail, sendVerificationConfirmationMail, sendPasswordResetRequestMail, sendPasswordResetConfirmationmail };
